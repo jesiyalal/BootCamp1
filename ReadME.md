@@ -36,7 +36,7 @@ This pipeline:
 7. Scans image using **Trivy**
 8. Pushes image to Azure Container Registry (ACR)
 9. Deploys application to AKS using Helm
-10. Enables scaling using Kubernetes HPA
+10 Verify the APP
 
 ---
 
