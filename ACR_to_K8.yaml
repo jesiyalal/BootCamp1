@@ -18,7 +18,7 @@ spec:
         #{Build.BuildId}#
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 5173
 # service type loadbalancer       
 ---
 apiVersion: v1
@@ -33,7 +33,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8085
+    targetPort: 5173
   type: LoadBalancer
   selector:
     app: app
