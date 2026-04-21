@@ -1,0 +1,16 @@
+replicaCount: 3
+
+image:
+  repository: bootcampproject1.azurecr.io/app
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 5173
+
+containerPort: 5173
+
+labels:
+  app: app
