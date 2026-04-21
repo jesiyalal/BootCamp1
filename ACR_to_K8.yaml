@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: my-app
+        image: bootcampproject1.azurecr.io/app:latest
+        #{Build.BuildId}#
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5173
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: app
+    k8s-app: app
+  name: app
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 5173
+  type: LoadBalancer
+  selector:
+    app: app
